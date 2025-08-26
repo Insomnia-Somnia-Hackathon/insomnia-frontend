@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-// import VaultDetails from '../../(components)/VaultDetails';
 import { VaultDetails } from './_components';
 import { vaults } from '../../../(lib)/mockData';
 

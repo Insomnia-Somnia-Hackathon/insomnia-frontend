@@ -17,6 +17,7 @@ export interface Vault {
   strategies: string[];
   acceptedAssets: string[];
   rewardsLogos: string[];
+  rewardsMultipliers: string[]; // Point multipliers for each reward (e.g., "1x", "2x", "3x")
   description: string;
   withdrawalTime: string;
   imageUrl: string;
@@ -28,6 +29,19 @@ export interface HistoryItem {
   vaultSlug: string;
   action: 'deposit' | 'withdraw' | 'claim';
   amountUSD: number;
+}
+
+export interface UserRewardBalance {
+  protocolName: string;
+  protocolLogo: string;
+  points: number;
+  multiplier: string;
+}
+
+export interface UserVaultRewards {
+  vaultSlug: string;
+  totalPoints: number;
+  rewardBalances: UserRewardBalance[];
 }
 
 export const protocols: Protocol[] = [
@@ -95,6 +109,7 @@ export const vaults: Vault[] = [
       '/Images/Logo/somnia_logo.png',
       'https://pbs.twimg.com/profile_images/1920358416645488640/2I1J4VmX_400x400.jpg'
     ],
+    rewardsMultipliers: ['2x', '1.5x'],
     description: 'Maximize ETH rewards across multiple Somnia protocols with automated yield strategies.',
     withdrawalTime: '7 days',
     imageUrl: '/Images/Logo/eth-logo.png'
@@ -113,6 +128,7 @@ export const vaults: Vault[] = [
       'https://pbs.twimg.com/profile_images/1922692326268289025/SbPCG67Z_400x400.jpg',
       'https://pbs.twimg.com/profile_images/1919271687188869120/0r7YTdwJ_400x400.jpg'
     ],
+    rewardsMultipliers: ['1x', '2x', '1.2x'],
     description: 'Stable, consistent returns from USD-denominated assets across the Somnia ecosystem.',
     withdrawalTime: '3 days',
     imageUrl: '/Images/Logo/usdc-logo.png'
@@ -132,6 +148,7 @@ export const vaults: Vault[] = [
       'https://pbs.twimg.com/profile_images/1920467040298483713/B7yqMDE4_400x400.jpg',
       'https://pbs.twimg.com/profile_images/1909551371646291968/-v1dViT0_400x400.jpg'
     ],
+    rewardsMultipliers: ['3x', '2x', '1.8x', '2.5x'],
     description: 'Aggressive points accumulation strategy designed for maximum airdrop potential.',
     withdrawalTime: '14 days',
     imageUrl: '/Images/Logo/somnia_logo.png'
@@ -173,6 +190,82 @@ export const history: HistoryItem[] = [
     vaultSlug: 'som-usd',
     action: 'deposit',
     amountUSD: 3200
+  }
+];
+
+// Mock data for user reward balances
+export const userVaultRewards: UserVaultRewards[] = [
+  {
+    vaultSlug: 'som-eth',
+    totalPoints: 12450,
+    rewardBalances: [
+      {
+        protocolName: 'Somnia Network',
+        protocolLogo: '/Images/Logo/somnia_logo.png',
+        points: 8300,
+        multiplier: '2x'
+      },
+      {
+        protocolName: 'Somnia Ecosystem',
+        protocolLogo: 'https://pbs.twimg.com/profile_images/1920358416645488640/2I1J4VmX_400x400.jpg',
+        points: 4150,
+        multiplier: '1.5x'
+      }
+    ]
+  },
+  {
+    vaultSlug: 'som-usd',
+    totalPoints: 8950,
+    rewardBalances: [
+      {
+        protocolName: 'Somnia Network',
+        protocolLogo: '/Images/Logo/somnia_logo.png',
+        points: 3200,
+        multiplier: '1x'
+      },
+      {
+        protocolName: 'Somnia Games',
+        protocolLogo: 'https://pbs.twimg.com/profile_images/1922692326268289025/SbPCG67Z_400x400.jpg',
+        points: 4100,
+        multiplier: '2x'
+      },
+      {
+        protocolName: 'PotionSwap',
+        protocolLogo: 'https://pbs.twimg.com/profile_images/1919271687188869120/0r7YTdwJ_400x400.jpg',
+        points: 1650,
+        multiplier: '1.2x'
+      }
+    ]
+  },
+  {
+    vaultSlug: 'som-points',
+    totalPoints: 18750,
+    rewardBalances: [
+      {
+        protocolName: 'Somnia Network',
+        protocolLogo: '/Images/Logo/somnia_logo.png',
+        points: 9000,
+        multiplier: '3x'
+      },
+      {
+        protocolName: 'Somnia Ecosystem',
+        protocolLogo: 'https://pbs.twimg.com/profile_images/1920358416645488640/2I1J4VmX_400x400.jpg',
+        points: 4500,
+        multiplier: '2x'
+      },
+      {
+        protocolName: 'Somnex',
+        protocolLogo: 'https://pbs.twimg.com/profile_images/1920467040298483713/B7yqMDE4_400x400.jpg',
+        points: 3150,
+        multiplier: '1.8x'
+      },
+      {
+        protocolName: 'Somnia Meme',
+        protocolLogo: 'https://pbs.twimg.com/profile_images/1909551371646291968/-v1dViT0_400x400.jpg',
+        points: 2100,
+        multiplier: '2.5x'
+      }
+    ]
   }
 ];
 

@@ -88,7 +88,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
               </div>
             </div>
 
-            <RewardsRow logos={vault.rewardsLogos} />
+            <RewardsRow logos={vault.rewardsLogos} multipliers={vault.rewardsMultipliers} />
           </div>
         </div>
 

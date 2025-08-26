@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Vault } from '@/app/(lib)/mockData';
+import Image from 'next/image';
+import { Vault, userVaultRewards } from '@/app/(lib)/mockData';
 import RewardsRow from '@/app/main/(components)/RewardsRow';
 import { Section } from './helper';
 
@@ -72,6 +73,9 @@ export default function VaultTabContent({ vault, activeTab }: VaultTabContentPro
 }
 
 function OverviewTab({ vault }: { vault: Vault }) {
+  // Find user rewards for this vault
+  const userRewards = userVaultRewards.find(rewards => rewards.vaultSlug === vault.slug);
+
   return (
     <div className="space-y-8">
       <Section title="Accepted Assets">
@@ -92,8 +96,83 @@ function OverviewTab({ vault }: { vault: Vault }) {
         </div>
       </Section>
 
+      <Section title="Your Rewards">
+        {userRewards ? (
+          <div className="space-y-4">
+            {/* Total Points */}
+            <div 
+              className="p-4 rounded-xl border"
+              style={{
+                backgroundColor: 'rgba(236,72,153,0.05)',
+                borderColor: 'rgba(236,72,153,0.2)',
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-slate-700">Total Points Earned</span>
+                <span className="text-2xl font-bold text-pink-600">
+                  {userRewards.totalPoints.toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            {/* Individual Protocol Rewards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {userRewards.rewardBalances.map((reward, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-xl border"
+                  style={{
+                    backgroundColor: 'rgba(15,23,42,0.02)',
+                    borderColor: 'rgba(15,23,42,0.06)',
+                  }}
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-full overflow-hidden border" style={{ borderColor: 'rgba(15,23,42,0.06)' }}>
+                      <Image
+                        src={reward.protocolLogo}
+                        alt={reward.protocolName}
+                        width={32}
+                        height={32}
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-medium text-slate-900 text-sm">{reward.protocolName}</div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg font-bold text-slate-800">
+                          {reward.points.toLocaleString()}
+                        </span>
+                        <span 
+                          className="text-xs font-semibold px-2 py-1 rounded-full"
+                          style={{
+                            color: '#ec4899',
+                            backgroundColor: 'rgba(236,72,153,0.1)',
+                          }}
+                        >
+                          {reward.multiplier}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div 
+            className="p-6 rounded-xl border text-center"
+            style={{
+              backgroundColor: 'rgba(15,23,42,0.02)',
+              borderColor: 'rgba(15,23,42,0.06)',
+            }}
+          >
+            <p className="text-slate-600">No rewards earned yet. Make a deposit to start earning points!</p>
+          </div>
+        )}
+      </Section>
+
       <Section title="Rewards from">
-        <RewardsRow logos={vault.rewardsLogos} />
+        <RewardsRow logos={vault.rewardsLogos} multipliers={vault.rewardsMultipliers} />
       </Section>
 
       <Section title="Withdrawal Time">

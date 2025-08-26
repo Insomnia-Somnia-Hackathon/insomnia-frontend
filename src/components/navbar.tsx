@@ -5,12 +5,13 @@ import {
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
+import { RippleButton } from "@/components/magicui/ripple-button";
 import { useState } from "react";
+import Link from "next/link";
 
 export function InsomniaNavbar() {
   // const navItems = [
@@ -42,7 +43,11 @@ export function InsomniaNavbar() {
           <NavbarLogo />
           {/* <NavItems items={navItems} /> */}
           <div className="flex items-center gap-4">
-              <NavbarButton variant="gradient" href='/main/vaults' target="_blank">Launch App</NavbarButton>
+            <Link href="/main/vaults" target="_blank">
+              <RippleButton className="bg-gradient-to-r from-pink-500 to-blue-500 text-white font-medium px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+                Launch App
+              </RippleButton>
+            </Link>
           </div>
         </NavBody>
 
@@ -71,15 +76,11 @@ export function InsomniaNavbar() {
               </a>
             ))} */}
             <div className="flex w-full flex-col gap-4">
-                <NavbarButton
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  variant="gradient"
-                  className="w-full"
-                  href="/main/vaults"
-                  target="_blank"
-                >
+              <Link href="/main/vaults" target="_blank" onClick={() => setIsMobileMenuOpen(false)}>
+                <RippleButton className="w-full bg-gradient-to-r from-pink-500 to-blue-500 text-white font-medium px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
                   Launch App
-                </NavbarButton>
+                </RippleButton>
+              </Link>
             </div>
           </MobileNavMenu>
         </MobileNav>

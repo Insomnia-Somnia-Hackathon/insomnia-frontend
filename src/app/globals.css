@@ -51,6 +51,16 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-rippling: rippling var(--duration) ease-out;
+  @keyframes rippling {
+  0% {
+    opacity: 1;
+    }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+    }
+  }
 }
 
 body {
@@ -287,7 +297,7 @@ body {
   .animate-scroll {
     animation: none;
   }
-  
+
   .gif-optimized {
     animation-play-state: paused;
   }
@@ -306,7 +316,7 @@ body {
   .vault-card-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .kpi-panel {
     margin-top: 1rem;
     border-left: none;

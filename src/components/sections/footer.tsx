@@ -3,7 +3,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-pink-400/20 to-pink-600/30 border-t border-pink-400/40 py-12">
+    <footer className="bg-gradient-to-b from-pink-400/20 to-pink-600/30 border-t border-pink-500/40 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}

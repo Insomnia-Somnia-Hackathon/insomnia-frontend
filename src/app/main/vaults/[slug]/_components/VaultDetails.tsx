@@ -11,6 +11,7 @@ import VaultTabContent from "./VaultTabContent";
 import VaultDetailsSkeleton from "./VaultDetailsSkeleton";
 import Stepper from "./stepperUI";
 import Popup from "../../_components/Popup";
+import SecondaryNav from "@/app/main/(components)/SecondaryNav";
 
 interface VaultDetailsProps {
   vault: Vault;
@@ -51,6 +52,7 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
         onClose={handleClosePopup}
         vaultName={vault.name}
       />
+      <SecondaryNav />
       <div
         className="min-h-screen w-full relative"
         style={{
@@ -64,7 +66,7 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
         <div className="absolute inset-0 bg-white/45 backdrop-blur-sm z-0" />
 
       <section className="relative z-10 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
           {/* Breadcrumb */}
           <div className="mb-6">
             <Link

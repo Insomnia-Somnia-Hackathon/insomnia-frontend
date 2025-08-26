@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { AvatarCirclesImplement } from "./avatar-circles-implement";
+import { RippleButton } from "@/components/magicui/ripple-button";
 import Link from "next/link";
 export const HeroSection = () => {
   return (
@@ -47,7 +48,7 @@ export const HeroSection = () => {
 
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             <span className="sansation-bold">
-            One-click deposit to auto-farm multiple airdrop points.
+              One-click deposit to auto-farm multiple airdrop points.
             </span>
           </p>
 
@@ -62,9 +63,9 @@ export const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-3"
           >
             <Link href="/main/vaults" target="_blank">
-              <button className="cursor-pointer px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 hover:scale-105 shadow-lg text-lg sansation-bold">
+              <RippleButton className="cursor-pointer px-3 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 hover:scale-105 shadow-lg text-lg sansation-bold">
                 Deposit Now
-              </button>
+              </RippleButton>
             </Link>
           </motion.div>
         </motion.div>
