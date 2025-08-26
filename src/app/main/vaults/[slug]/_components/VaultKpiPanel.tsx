@@ -9,12 +9,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 import { Vault } from "@/app/(lib)/mockData";
 import { designTokens } from "@/app/(lib)/designTokens";
 import { formatCurrency, formatPercent } from "@/app/(lib)/utils";
 import { Kpi } from "./helper";
 
-export default function VaultKpiPanel({ vault }: { vault: Vault }) {
+interface VaultKpiPanelProps {
+  vault: Vault;
+  onDeposit?: (vault: Vault) => void;
+}
+
+export default function VaultKpiPanel({ vault, onDeposit }: VaultKpiPanelProps) {
   return (
     <div
       className="p-6 rounded-2xl border shadow-sm"
@@ -38,28 +44,22 @@ export default function VaultKpiPanel({ vault }: { vault: Vault }) {
 
           {/* Deposit / Withdraw buttons */}
           <div className="space-y-3 pt-1">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button
-                  className="w-full font-medium rounded-full"
-                  style={{
-                    backgroundColor: "#ec4899",
-                    color: "#fff",
-                    boxShadow: "0 10px 22px rgba(236,72,153,0.35)",
-                  }}
-                >
-                  Deposit
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Deposit to {vault.name}</DialogTitle>
-                </DialogHeader>
-                <div className="py-4 text-slate-600">
-                  Deposit flow with wallet integration goes here.
-                </div>
-              </DialogContent>
-            </Dialog>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button
+                onClick={() => onDeposit?.(vault)}
+                className="w-full font-medium rounded-full cursor-pointer"
+                style={{
+                  backgroundColor: "#ec4899",
+                  color: "#fff",
+                  boxShadow: "0 10px 22px rgba(236,72,153,0.35)",
+                }}
+              >
+                Deposit
+              </Button>
+            </motion.div>
 
             <Dialog>
               <DialogTrigger asChild>

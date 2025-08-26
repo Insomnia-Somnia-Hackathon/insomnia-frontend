@@ -10,6 +10,7 @@ import VaultTabs from "./VaultTabs";
 import VaultTabContent from "./VaultTabContent";
 import VaultDetailsSkeleton from "./VaultDetailsSkeleton";
 import Stepper from "./stepperUI";
+import Popup from "../../_components/Popup";
 
 interface VaultDetailsProps {
   vault: Vault;
@@ -20,6 +21,7 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
     "overview" | "strategies" | "risks" | "docs"
   >("overview");
   const [isLoading, setIsLoading] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     // Simulate loading delay
@@ -30,22 +32,36 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleDeposit = (vault: Vault) => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   if (isLoading) {
     return <VaultDetailsSkeleton />;
   }
 
   return (
-    <div
-      className="min-h-screen w-full relative"
-      style={{
-        backgroundImage: "url(/Images/Background/vault-background.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-white/45 backdrop-blur-sm z-0" />
+    <>
+      <Popup 
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        vaultName={vault.name}
+      />
+      <div
+        className="min-h-screen w-full relative"
+        style={{
+          backgroundImage: "url(/Images/Background/vault-background.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/45 backdrop-blur-sm z-0" />
 
       <section className="relative z-10 py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -68,7 +84,7 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
                 <Stepper />
               </div>
             </div>
-            <VaultKpiPanel vault={vault} />
+            <VaultKpiPanel vault={vault} onDeposit={handleDeposit} />
           </div>
 
           {/* Tabs */}
@@ -78,6 +94,7 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
           <VaultTabContent vault={vault} activeTab={activeTab} />
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 import { designTokens } from "../../../(lib)/designTokens";
 import { formatCurrency, formatPercent, getRiskColor } from "../../../(lib)/utils";
 import { Vault } from "../../../(lib)/mockData";
@@ -12,9 +13,10 @@ import RewardsRow from "../../(components)/RewardsRow";
 
 interface VaultCardProps {
   vault: Vault;
+  onDeposit?: (vault: Vault) => void;
 }
 
-export default function VaultCard({ vault }: VaultCardProps) {
+export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
   return (
     <div
       className="relative overflow-hidden rounded-3xl border shadow-sm"
@@ -185,17 +187,23 @@ export default function VaultCard({ vault }: VaultCardProps) {
 
             <div className="pt-4 space-y-3">
               {/* PRIMARY: PINK button */}
-              <Button
-                className="w-full font-medium cursor-pointer"
-                style={{
-                  backgroundColor: "#ec4899", // pink-500
-                  color: "#ffffff",
-                  borderRadius: designTokens.components.button.primary.radius,
-                  boxShadow: "0 10px 22px rgba(236,72,153,0.35)",
-                }}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Deposit
-              </Button>
+                <Button
+                  onClick={() => onDeposit?.(vault)}
+                  className="w-full font-medium cursor-pointer"
+                  style={{
+                    backgroundColor: "#ec4899", // pink-500
+                    color: "#ffffff",
+                    borderRadius: designTokens.components.button.primary.radius,
+                    boxShadow: "0 10px 22px rgba(236,72,153,0.35)",
+                  }}
+                >
+                  Deposit
+                </Button>
+              </motion.div>
 
               <Link href={`/main/vaults/${vault.slug}`}>
                 <Button

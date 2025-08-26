@@ -8,6 +8,7 @@ import { vaults } from "@/app/(lib)/mockData";
 import type { Vault } from "@/app/(lib)/mockData";
 import VaultCard from "./VaultCard";
 import VaultsGridSkeleton from "./VaultsGridSkeleton";
+import Popup from "./Popup";
 import Image from "next/image";
 
 export default function VaultsGrid() {
@@ -16,6 +17,8 @@ export default function VaultsGrid() {
   >("All");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedVault, setSelectedVault] = useState<Vault | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     // Simulate loading delay
@@ -32,21 +35,37 @@ export default function VaultsGrid() {
 
   const riskOptions = ["All", "Low", "Moderate", "High"] as const;
 
+  const handleDeposit = (vault: Vault) => {
+    setSelectedVault(vault);
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedVault(null);
+  };
+
   if (isLoading) {
     return <VaultsGridSkeleton count={3} />;
   }
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{
-        backgroundImage: "url(/Images/Background/vault-background.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className="absolute inset-0 bg-white/45 backdrop-blur-md z-0" />
+    <>
+      <Popup 
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        vaultName={selectedVault?.name || ""}
+      />
+      <div
+        className="min-h-screen relative"
+        style={{
+          backgroundImage: "url(/Images/Background/vault-background.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-white/45 backdrop-blur-md z-0" />
 
       <section className="relative z-10 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -137,7 +156,7 @@ export default function VaultsGrid() {
                 }}
               >
                 <div className="text-slate-900">
-                  <VaultCard vault={vault} />
+                  <VaultCard vault={vault} onDeposit={handleDeposit} />
                 </div>
               </div>
             ))}
@@ -152,6 +171,7 @@ export default function VaultsGrid() {
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
