@@ -7,7 +7,7 @@ import { LinkSimple, TrendUp } from "phosphor-react";
 export const FeaturesSection = () => {
   const features = [
     {
-      title: "Safe Airdrop Vaults",
+      title: "Powered by Insomnia Vaults.",
       description:
         "Deposit once and let our smart vaults auto-distribute across protocols. Earn farming rewards and maximize airdrop points without the hassle.",
       icon: null,
@@ -15,7 +15,7 @@ export const FeaturesSection = () => {
       spotlightColor: "rgba(147, 51, 234, 0.2)" as const,
     },
     {
-      title: "Farm Across the Somnia Ecosystem",
+      title: "Farm Across the Somnia Ecosystem.",
       description:
         "One ecosystem, endless opportunities. Collect airdrop points from Somnia's native protocols without ever leaving the network.",
       icon: LinkSimple,
@@ -23,9 +23,9 @@ export const FeaturesSection = () => {
       spotlightColor: "rgba(236, 72, 153, 0.2)" as const,
     },
     {
-      title: "Maximize Your Points",
+      title: "Maximize Your Points & Yield.",
       description:
-        "Let automation work for you. Earn points even while you sleep.",
+        "Let automation work for you. Earn points & Yield even while you sleep.",
       icon: TrendUp,
       gifSrc: "/Images/gif/vault-animated-3.gif",
       spotlightColor: "rgba(59, 130, 246, 0.2)" as const,

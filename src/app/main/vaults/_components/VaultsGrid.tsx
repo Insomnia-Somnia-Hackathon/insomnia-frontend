@@ -91,7 +91,7 @@ export default function VaultsGrid() {
 
               <p className="text-slate-800/90 drop-shadow-[0_1px_6px_rgba(255,255,255,0.6)]">
                 Choose from our selection of optimized vaults to maximize your
-                airdrop points.
+                airdrop points & yield.
               </p>
             </div>
 

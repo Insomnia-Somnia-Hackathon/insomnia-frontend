@@ -63,7 +63,7 @@ export default function CustomConnectButton() {
               }
 
               return (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   {/* Chain Selector with Somnia logo */}
                   <button
                     onClick={openChainModal}
@@ -81,28 +81,46 @@ export default function CustomConnectButton() {
                       height={16}
                       className="rounded-sm"
                     />
-                    <span className="text-sm">{chain.name}</span>
+                    <span className="text-sm font-medium">{chain.name}</span>
                   </button>
 
-                  {/* Account Button with Balance */}
+                  {/* Wallet Address */}
                   <button
                     onClick={openAccountModal}
-                    className="cursor-pointer flex items-center gap-2 rounded-full px-4 py-2 h-10 shadow-sm hover:opacity-80 transition-opacity"
+                    className="cursor-pointer flex items-center gap-2 rounded-full px-3 py-1.5 shadow-sm hover:opacity-80 transition-opacity"
                     style={{
                       backgroundColor: "rgba(255,255,255,0.9)",
                       color: "#111827",
                       backdropFilter: "blur(8px)",
                     }}
                   >
-                    <div className="text-sm">
-                      <div className="font-medium">{account.displayName}</div>
-                      {account.displayBalance && (
-                        <div className="text-xs text-gray-600">
-                          {account.displayBalance}
-                        </div>
-                      )}
+                    <div className="text-sm font-medium">
+                      {account.displayName}
                     </div>
                   </button>
+
+                  {/* Balance Display with STT Logo */}
+                  {account.displayBalance && (
+                    <div
+                      className="flex items-center gap-2 rounded-full px-3 py-1.5 shadow-sm"
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.9)",
+                        color: "#111827",
+                        backdropFilter: "blur(8px)",
+                      }}
+                    >
+                      <Image
+                        src="/Images/Logo/somnia_logo.png"
+                        alt="STT Token"
+                        width={14}
+                        height={14}
+                        className="rounded-full"
+                      />
+                      <span className="text-sm font-medium">
+                        {account.displayBalance}
+                      </span>
+                    </div>
+                  )}
                 </div>
               );
             })()}
