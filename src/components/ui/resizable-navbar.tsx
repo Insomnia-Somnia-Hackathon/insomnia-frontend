@@ -240,7 +240,6 @@ export const NavbarLogo = () => {
         alt="Insomnia Logo"
         className="w-8 h-8 rounded-full"
       />
-      <span className="font-bold text-black dark:text-white">Insomnia</span>
     </a>
   );
 };

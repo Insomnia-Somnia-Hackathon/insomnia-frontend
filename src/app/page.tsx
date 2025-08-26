@@ -8,7 +8,7 @@ import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div>
       <InsomniaNavbar />
       <HeroSection />
       <LogoMarquee />

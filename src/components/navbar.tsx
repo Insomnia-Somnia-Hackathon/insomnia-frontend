@@ -36,7 +36,7 @@ export function InsomniaNavbar() {
 
   return (
     <div className="relative w-full">
-      <Navbar className="fixed top-0 mt-5">
+      <Navbar className="fixed top-0 mt-15">
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
