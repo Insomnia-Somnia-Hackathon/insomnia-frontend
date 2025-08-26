@@ -98,7 +98,7 @@ export const designTokens = {
       padding: "8px 14px"
     },
     tabs: {
-      indicator: { bg: "#8BFF5B", height: "2px" },
+      indicator: { bg: "#ffafcc", height: "2px" },
       item: { text: "#A8B3C7", activeText: "#E6F0FF" }
     }
   }

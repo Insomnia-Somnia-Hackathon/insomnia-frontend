@@ -31,7 +31,7 @@ export const FeaturesSection = () => {
       spotlightColor: "rgba(59, 130, 246, 0.2)" as const,
     },
     {
-      title: "Safety for Airdroppers.",
+      title: "Farm Airdrop.",
       icon: "/Images/Logo/airdrop.png",
       spotlightColor: "rgba(239, 68, 68, 0.2)" as const,
     },

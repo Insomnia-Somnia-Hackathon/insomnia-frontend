@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { AvatarCirclesImplement } from "./avatar-circles-implement";
+import Link from "next/link";
 export const HeroSection = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
@@ -60,9 +61,11 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-3"
           >
-            <button className="cursor-pointer px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 hover:scale-105 shadow-lg text-lg sansation-bold">
-              Deposit Now
-            </button>
+            <Link href="/main/vaults" target="_blank">
+              <button className="cursor-pointer px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 hover:scale-105 shadow-lg text-lg sansation-bold">
+                Deposit Now
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import SecondaryNav from '../(components)/SecondaryNav';
-import VaultsGrid from '../(components)/VaultsGrid';
+import VaultsGrid from './_components/VaultsGrid';
 
 export const metadata: Metadata = {
   title: 'Vaults - Somnia Airdrop Points Vault',

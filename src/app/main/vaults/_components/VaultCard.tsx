@@ -5,10 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { designTokens } from "../../(lib)/designTokens";
-import { formatCurrency, formatPercent, getRiskColor } from "../../(lib)/utils";
-import { Vault } from "../../(lib)/mockData";
-import RewardsRow from "./RewardsRow";
+import { designTokens } from "../../../(lib)/designTokens";
+import { formatCurrency, formatPercent, getRiskColor } from "../../../(lib)/utils";
+import { Vault } from "../../../(lib)/mockData";
+import RewardsRow from "../../(components)/RewardsRow";
 
 interface VaultCardProps {
   vault: Vault;
@@ -104,7 +104,7 @@ export default function VaultCard({ vault }: VaultCardProps) {
             {/* Somnia Network Header */}
             <div className="flex items-center justify-end gap-2 mb-4">
               <span className="text-xs font-medium text-slate-600">
-                Powered by
+                Network :
               </span>
               <div className="flex items-center gap-1">
                 <Image

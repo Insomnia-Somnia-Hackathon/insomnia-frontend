@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Filter } from "lucide-react";
-import { designTokens } from "../../(lib)/designTokens";
-import { vaults } from "../../(lib)/mockData";
-import type { Vault } from "../../(lib)/mockData";
+import { designTokens } from "@/app/(lib)/designTokens";
+import { vaults } from "@/app/(lib)/mockData";
+import type { Vault } from "@/app/(lib)/mockData";
 import VaultCard from "./VaultCard";
 import Image from "next/image";
 
@@ -39,10 +39,10 @@ export default function VaultsGrid() {
             <div>
               <div className="flex items-center mt-10">
                 <h1
-                  className="font-extrabold mix-blend-difference text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
+                  className="font-extrabold mix-blend-difference text-black"
                   style={{ fontSize: designTokens.typography.scale.h1 }}
                 >
-                  Airdrop Point Vaults
+                  Insomnia Vaults
                 </h1>
                 <div className="ml-3 flex items-center">
                   {/* <Sparkles className="w-10 text-pink-400 h-10 align-middle" /> */}
