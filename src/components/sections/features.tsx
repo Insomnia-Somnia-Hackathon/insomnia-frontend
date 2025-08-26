@@ -2,22 +2,24 @@
 import React from "react";
 import { motion } from "motion/react";
 import SpotlightCard from "@/components/ui/spotlight-card";
-import { Bank, LinkSimple, TrendUp, ShieldCheck } from "phosphor-react";
+import { LinkSimple, TrendUp } from "phosphor-react";
 
 export const FeaturesSection = () => {
   const features = [
     {
-      title: "Smart Airdrop Vaults",
+      title: "Safe Airdrop Vaults",
       description:
         "Deposit once and let our smart vaults auto-distribute across protocols. Earn farming rewards and maximize airdrop points without the hassle.",
-      icon: Bank,
+      icon: null,
+      gifSrc: "/Images/gif/vault-animated-1.gif",
       spotlightColor: "rgba(147, 51, 234, 0.2)" as const,
     },
     {
       title: "Farm Across the Somnia Ecosystem",
       description:
-        "One ecosystem, endless opportunities. Collect airdrop points from Somnia’s native protocols without ever leaving the network.",
+        "One ecosystem, endless opportunities. Collect airdrop points from Somnia's native protocols without ever leaving the network.",
       icon: LinkSimple,
+      gifSrc: "/Images/gif/vault-animated-2.gif",
       spotlightColor: "rgba(236, 72, 153, 0.2)" as const,
     },
     {
@@ -25,11 +27,12 @@ export const FeaturesSection = () => {
       description:
         "Let automation work for you. Earn points even while you sleep.",
       icon: TrendUp,
+      gifSrc: "/Images/gif/vault-animated-3.gif",
       spotlightColor: "rgba(59, 130, 246, 0.2)" as const,
     },
     {
-      title: "Safety for Airdroppers",
-      icon: ShieldCheck,
+      title: "Safety for Airdroppers.",
+      icon: "/Images/Logo/airdrop.png",
       spotlightColor: "rgba(239, 68, 68, 0.2)" as const,
     },
   ];
@@ -96,15 +99,52 @@ export const FeaturesSection = () => {
                   spotlightColor={feature.spotlightColor}
                 >
                   <div className="relative z-10 h-full flex flex-col justify-center text-center md:text-left items-center md:items-start p-4">
-                    {React.createElement(feature.icon, {
-                      className:
-                        "text-4xl md:text-5xl text-gray-800 mb-4 mx-auto md:mx-0",
-                      weight: "bold",
-                    })}
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800">
+                    {feature.gifSrc ? (
+                      <img
+                        src={feature.gifSrc}
+                        alt={feature.title}
+                        className="w-12 h-12 md:w-16 md:h-16 mb-4 mx-auto md:mx-0 object-contain gif-optimized gif-lazy"
+                        loading="lazy"
+                        decoding="async"
+                        onLoad={(e) => {
+                          const img = e.target as HTMLImageElement;
+                          img.classList.add("loaded");
+                          // Auto-pause after 3 seconds to save resources
+                          setTimeout(() => {
+                            img.style.visibility = "hidden";
+                            img.style.visibility = "visible";
+                          }, 3000);
+                        }}
+                        onMouseEnter={(e) => {
+                          // Resume animation on hover for better UX
+                          const img = e.target as HTMLImageElement;
+                          const currentSrc = img.src;
+                          img.src = "";
+                          img.src = currentSrc;
+                        }}
+                        style={{
+                          backfaceVisibility: "hidden",
+                        }}
+                      />
+                    ) : feature.icon ? (
+                      typeof feature.icon === "string" ? (
+                        <img
+                          src={feature.icon}
+                          alt={feature.title}
+                          className="w-12 h-12 md:w-16 md:h-16 mb-4 mx-auto md:mx-0 object-contain"
+                        />
+                      ) : (
+                        React.createElement(feature.icon, {
+                          className:
+                            "text-4xl md:text-5xl text-gray-800 mb-4 mx-auto md:mx-0",
+                          weight: "bold",
+                        })
+                      )
+                    ) : null}
+                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-gray-800 sansation-bold">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed sansation-regular">
                       {feature.description}
                     </p>
                   </div>

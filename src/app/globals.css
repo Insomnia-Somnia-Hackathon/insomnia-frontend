@@ -163,6 +163,28 @@ body {
   animation: star-movement-top linear infinite alternate;
 }
 
+/* GIF Optimization Classes */
+.gif-optimized {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  image-rendering: optimizeSpeed;
+}
+
+.gif-paused {
+  animation-play-state: paused;
+}
+
+/* Intersection Observer for GIF loading */
+.gif-lazy {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gif-lazy.loaded {
+  opacity: 1;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -239,4 +261,75 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Somnia Vault App Styles */
+.vault-card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .vault-card-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.kpi-glass {
+  backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, rgba(139,255,91,0.08), rgba(139,255,91,0.02));
+  border: 1px solid rgba(139,255,91,0.18);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll {
+    animation: none;
+  }
+  
+  .gif-optimized {
+    animation-play-state: paused;
+  }
+}
+
+/* Focus styles for accessibility */
+.focus\:ring-accent:focus {
+  --tw-ring-color: #8BFF5B;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .vault-card-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .kpi-panel {
+    margin-top: 1rem;
+    border-left: none;
+    border-top: 1px solid rgba(139,255,91,0.18);
+    padding-top: 1.5rem;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 255, 91, 0.3);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 255, 91, 0.5);
 }

@@ -55,9 +55,6 @@ export function LogoMarquee() {
             Built with{" "}
             <span className="text-purple-600">Leading Technologies</span>
           </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto">
-            Powered by the most trusted protocols in Web3
-          </p>
         </div>
 
         <div className="relative overflow-hidden">
