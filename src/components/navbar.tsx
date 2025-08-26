@@ -42,7 +42,7 @@ export function InsomniaNavbar() {
           <NavbarLogo />
           {/* <NavItems items={navItems} /> */}
           <div className="flex items-center gap-4">
-            <NavbarButton variant="gradient">Launch App</NavbarButton>
+              <NavbarButton variant="gradient" href='/main/vaults' target="_blank">Launch App</NavbarButton>
           </div>
         </NavBody>
 
@@ -71,13 +71,15 @@ export function InsomniaNavbar() {
               </a>
             ))} */}
             <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="gradient"
-                className="w-full"
-              >
-                Launch App
-              </NavbarButton>
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="gradient"
+                  className="w-full"
+                  href="/main/vaults"
+                  target="_blank"
+                >
+                  Launch App
+                </NavbarButton>
             </div>
           </MobileNavMenu>
         </MobileNav>
