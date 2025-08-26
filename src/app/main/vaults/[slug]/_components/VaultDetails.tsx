@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Vault } from "@/app/(lib)/mockData";
@@ -8,6 +8,7 @@ import VaultHeader from "./VaultHeader";
 import VaultKpiPanel from "./VaultKpiPanel";
 import VaultTabs from "./VaultTabs";
 import VaultTabContent from "./VaultTabContent";
+import VaultDetailsSkeleton from "./VaultDetailsSkeleton";
 import Stepper from "./stepperUI";
 
 interface VaultDetailsProps {
@@ -18,6 +19,20 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
   const [activeTab, setActiveTab] = useState<
     "overview" | "strategies" | "risks" | "docs"
   >("overview");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <VaultDetailsSkeleton />;
+  }
 
   return (
     <div

@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Filter } from "lucide-react";
 import { designTokens } from "@/app/(lib)/designTokens";
 import { vaults } from "@/app/(lib)/mockData";
 import type { Vault } from "@/app/(lib)/mockData";
 import VaultCard from "./VaultCard";
+import VaultsGridSkeleton from "./VaultsGridSkeleton";
 import Image from "next/image";
 
 export default function VaultsGrid() {
@@ -14,12 +15,26 @@ export default function VaultsGrid() {
     "All" | "Low" | "Moderate" | "High"
   >("All");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredVaults = vaults.filter(
     (v: Vault) => selectedRisk === "All" || v.risk === selectedRisk
   );
 
   const riskOptions = ["All", "Low", "Moderate", "High"] as const;
+
+  if (isLoading) {
+    return <VaultsGridSkeleton count={3} />;
+  }
 
   return (
     <div

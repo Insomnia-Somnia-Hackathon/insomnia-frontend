@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Header from './(components)/Header';
 import Footer from './(components)/Footer';
 import { designTokens } from '../(lib)/designTokens';
+import Providers from '../providers';
 
 export const metadata: Metadata = {
   title: {
@@ -42,16 +43,18 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div 
-      className="min-h-screen custom-scrollbar"
-      style={{
-        backgroundColor: designTokens.colors.background,
-        color: designTokens.colors.textPrimary,
-        fontFamily: designTokens.typography.fontBody,
-      }}
-    >
-      <main className="relative" role="main">{children}</main>
-      <Footer />
-    </div>
+    <Providers>
+      <div 
+        className="min-h-screen custom-scrollbar"
+        style={{
+          backgroundColor: designTokens.colors.background,
+          color: designTokens.colors.textPrimary,
+          fontFamily: designTokens.typography.fontBody,
+        }}
+      >
+        <main className="relative" role="main">{children}</main>
+        <Footer />
+      </div>
+    </Providers>
   );
 }

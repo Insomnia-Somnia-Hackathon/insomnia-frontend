@@ -47,7 +47,7 @@ export const HeroSection = () => {
 
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             <span className="sansation-bold">
-              One click deposit. Auto-farm multiple Airdrop Points.
+            One-click deposit to auto-farm multiple airdrop points.
             </span>
           </p>
 

@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { cn } from "../../(lib)/utils";
 import { designTokens } from "../../(lib)/designTokens";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import CustomConnectButton from "./CustomConnectButton";
 
 export default function SecondaryNav() {
   const pathname = usePathname();
@@ -67,23 +69,9 @@ export default function SecondaryNav() {
               </nav>
             </div>
 
-            {/* Right: Network Selector + CTA */}
+            {/* Right: Connect Button */}
             <div className="flex items-center gap-3">
-              <button
-                className="flex items-center gap-2 rounded-full px-4 py-1.5 shadow-sm"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.28)",
-                  color: "#111827",
-                  backdropFilter: "blur(8px)",
-                }}
-              >
-                <span className="text-sm">Somnia Network</span>
-                <ChevronDown className="h-4 w-4" />
-              </button>
-
-              <NavbarButton variant="gradient" className="hidden sm:inline-flex rounded-full px-6">
-                Connect Wallet
-              </NavbarButton>
+              <CustomConnectButton />
             </div>
           </div>
         </NavBody>
@@ -119,26 +107,10 @@ export default function SecondaryNav() {
                 </Link>
               ))}
 
-              <div className="mt-2 flex flex-col gap-2">
-                <button
-                  className="flex w-full items-center justify-between rounded-full px-4 py-2"
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.28)",
-                    color: "#111827",
-                    backdropFilter: "blur(8px)",
-                  }}
-                >
-                  <span>Somnia Network</span>
-                  <ChevronDown className="h-4 w-4" />
-                </button>
-
-                <NavbarButton
-                  variant="gradient"
-                  className="w-full rounded-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
+              <div className="mt-2">
+                <button className="w-full rounded-full px-6 py-2 bg-gradient-to-r from-pink-500 to-blue-500 text-white text-sm">
                   Connect Wallet
-                </NavbarButton>
+                </button>
               </div>
             </div>
           </MobileNavMenu>

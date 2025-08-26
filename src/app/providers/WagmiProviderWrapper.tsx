@@ -7,11 +7,35 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// Custom Somnia Testnet chain configuration
+const somniaTestnet = {
+  id: 50312,
+  name: 'Somnia Testnet',
+  network: 'somnia-testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'STT',
+    symbol: 'STT',
+  },
+  rpcUrls: {
+    default: {
+      http: ['https://dream-rpc.somnia.network/'],
+    },
+    public: {
+      http: ['https://dream-rpc.somnia.network/'],
+    },
+  },
+  blockExplorers: {
+    default: { name: 'Somnia Explorer', url: 'https://shannon-explorer.somnia.network/' },
+  },
+} as const;
+
 const wagmiConfig = getDefaultConfig({
   appName: 'Insomnia',
   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'default-project-id',
-  chains: [sepolia],
+  chains: [somniaTestnet, sepolia],
   transports: {
+    [somniaTestnet.id]: http(),
     [sepolia.id]: http(),
   },
 });
@@ -25,15 +49,11 @@ export default function WagmiProviderWrapper({ children }: { children: ReactNode
     setMounted(true);
   }, []);
 
-  if (!mounted) {
-    return <div className="min-h-screen">{children}</div>;
-  }
-
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          {children}
+          {!mounted ? <div className="min-h-screen">{children}</div> : children}
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

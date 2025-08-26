@@ -1,20 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { designTokens } from '@/app/(lib)/designTokens';
 import { history } from '@/app/(lib)/mockData';
 import Header from './Header';
 import FilterPills from './FilterPills';
 import StatsRow from './StatsRow';
 import TransactionsTable from './TransactionsTable';
+import HistoryPageSkeleton from './HistoryPageSkeleton';
 
 export default function HistoryPage() {
+  const [isLoading, setIsLoading] = useState(true);
   const [actionFilter, setActionFilter] =
     useState<'all' | 'deposit' | 'withdraw' | 'claim'>('all');
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredHistory = history.filter(
     (item) => actionFilter === 'all' || item.action === actionFilter
   );
+
+  if (isLoading) {
+    return <HistoryPageSkeleton />;
+  }
 
   return (
     <div
