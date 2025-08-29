@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, TrendingUp, Shield, Zap } from 'lucide-react';
 import { designTokens } from '../../(lib)/designTokens';
 import { formatCurrency, formatPercent } from '../../(lib)/utils';
-import { getKpiStats } from '../../(lib)/mockData';
+import { getKpiStats } from '../../(lib)/vaultsData';
 import KPIStat from './KPIStat';
 
 export default function Hero() {

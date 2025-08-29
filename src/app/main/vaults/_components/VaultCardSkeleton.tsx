@@ -13,7 +13,6 @@ export default function VaultCardSkeleton() {
         backdropFilter: "blur(8px)",
       }}
     >
-      {/* Subtle soft glow kept inside the card only */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -23,7 +22,6 @@ export default function VaultCardSkeleton() {
       />
 
       <div className="relative grid grid-cols-1 lg:grid-cols-3">
-        {/* LEFT: Content Skeleton */}
         <div className="lg:col-span-2 p-6 lg:p-7">
           <div className="mb-4">
             <div className="flex items-center gap-4 mb-3">
@@ -63,7 +61,6 @@ export default function VaultCardSkeleton() {
           </div>
         </div>
 
-        {/* RIGHT: KPI panel Skeleton */}
         <div className="relative lg:col-span-1">
           <div
             className="flex h-full flex-col justify-between border-l p-6 lg:p-7"
@@ -74,7 +71,6 @@ export default function VaultCardSkeleton() {
               backdropFilter: `blur(${designTokens.effects.blurGlass})`,
             }}
           >
-            {/* Somnia Network Header Skeleton */}
             <div className="flex items-center justify-end gap-2 mb-4">
               <div className="h-3 bg-gray-300 rounded animate-pulse w-16" />
               <div className="flex items-center gap-1">
@@ -84,7 +80,6 @@ export default function VaultCardSkeleton() {
             </div>
 
             <div className="flex gap-4">
-              {/* KPI Stats Skeleton */}
               <div className="flex-1 space-y-4">
                 <div>
                   <div className="h-3 bg-gray-300 rounded animate-pulse w-20 mb-1" />
@@ -102,14 +97,12 @@ export default function VaultCardSkeleton() {
                 </div>
               </div>
 
-              {/* Vault Image Skeleton */}
               <div className="flex items-center justify-center mr-15">
                 <div className="w-20 h-20 bg-gray-300 rounded-lg animate-pulse" />
               </div>
             </div>
 
             <div className="pt-4 space-y-3">
-              {/* Button Skeletons */}
               <div className="w-full h-10 bg-gray-300 rounded-lg animate-pulse" />
               <div className="w-full h-10 bg-gray-300 rounded-lg animate-pulse" />
             </div>

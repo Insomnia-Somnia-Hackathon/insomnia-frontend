@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { designTokens } from '../../(lib)/designTokens';
-import { vaults } from '../../(lib)/mockData';
+import { vaults } from '../../(lib)/vaultsData';
 import VaultCard from '../vaults/_components/VaultCard';
 
 export default function VaultTeaser() {

@@ -1,7 +1,7 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { VaultDetails } from './_components';
-import { vaults } from '../../../(lib)/mockData';
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { VaultDetails } from "./_components";
+import { vaults } from "../../../(lib)/vaultsData";
 
 interface VaultPageProps {
   params: {
@@ -9,12 +9,14 @@ interface VaultPageProps {
   };
 }
 
-export async function generateMetadata({ params }: VaultPageProps): Promise<Metadata> {
-  const vault = vaults.find(v => v.slug === params.slug);
-  
+export async function generateMetadata({
+  params,
+}: VaultPageProps): Promise<Metadata> {
+  const vault = vaults.find((v) => v.slug === params.slug);
+
   if (!vault) {
     return {
-      title: 'Vault Not Found',
+      title: "Vault Not Found",
     };
   }
 
@@ -31,7 +33,7 @@ export async function generateStaticParams() {
 }
 
 export default function VaultPage({ params }: VaultPageProps) {
-  const vault = vaults.find(v => v.slug === params.slug);
+  const vault = vaults.find((v) => v.slug === params.slug);
 
   if (!vault) {
     notFound();

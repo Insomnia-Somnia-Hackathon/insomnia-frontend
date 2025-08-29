@@ -7,9 +7,18 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { designTokens } from "../../../(lib)/designTokens";
-import { formatCurrency, formatPercent, getRiskColor } from "../../../(lib)/utils";
-import { Vault } from "../../../(lib)/mockData";
+import { formatPercent, getRiskColor } from "../../../(lib)/utils";
+import type { Vault } from "../../../(lib)/vaultsData";
 import RewardsRow from "../../(components)/RewardsRow";
+
+import {
+  useVaultStatic,
+  useVaultDynamic,
+  useVaultUserBalances,
+  useVaultWithdrawInfo,
+  fEth,
+  formatLock,
+} from "@/app/hooks/vaults/useReadVaults";
 
 interface VaultCardProps {
   vault: Vault;
@@ -17,6 +26,17 @@ interface VaultCardProps {
 }
 
 export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
+  const { name: nameOnChain, symbol: symbolOnChain } = useVaultStatic(
+    vault.address
+  );
+  const { totalAssets } = useVaultDynamic(vault.address);
+  const { shares } = useVaultUserBalances(vault.address);
+  const { lockupSeconds } = useVaultWithdrawInfo(vault.address);
+
+  const displayName = nameOnChain || vault.name;
+  const displaySymbol = symbolOnChain || vault.symbol;
+  const displayWithdrawal = formatLock(lockupSeconds) || vault.withdrawalTime;
+
   return (
     <div
       className="relative overflow-hidden rounded-3xl border shadow-sm"
@@ -26,7 +46,6 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
         backdropFilter: "blur(8px)",
       }}
     >
-      {/* Subtle soft glow kept inside the card only */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -36,23 +55,28 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
       />
 
       <div className="relative grid grid-cols-1 lg:grid-cols-3">
-        {/* LEFT: Content */}
         <div className="lg:col-span-2 p-6 lg:p-7">
           <div className="mb-4">
             <div className="flex items-center gap-4 mb-3">
               <div className="w-12 h-12 relative flex-shrink-0">
                 <Image
                   src={vault.imageUrl}
-                  alt={vault.name}
-                  width={48}
+                  alt={displayName}
+                  width={50}
                   height={48}
                   className="rounded-lg"
                 />
               </div>
-              <h3 className="text-2xl font-semibold text-slate-900">
-                {vault.name}
-              </h3>
+              <div>
+                <h3 className="text-2xl font-semibold text-slate-900">
+                  {displayName}
+                </h3>
+                <div className="text-xs text-slate-600 mt-0.5">
+                  {displaySymbol}
+                </div>
+              </div>
             </div>
+
             <div className="mt-2 flex items-center gap-2">
               <Badge
                 className={`px-2 py-1 text-xs rounded-full ${getRiskColor(
@@ -88,11 +112,13 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
               </div>
             </div>
 
-            <RewardsRow logos={vault.rewardsLogos} multipliers={vault.rewardsMultipliers} />
+            <RewardsRow
+              logos={vault.rewardsLogos}
+              multipliers={vault.rewardsMultipliers}
+            />
           </div>
         </div>
 
-        {/* RIGHT: KPI panel */}
         <div className="relative lg:col-span-1">
           <div
             className="flex h-full flex-col justify-between border-l p-6 lg:p-7"
@@ -103,7 +129,6 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
               backdropFilter: `blur(${designTokens.effects.blurGlass})`,
             }}
           >
-            {/* Somnia Network Header */}
             <div className="flex items-center justify-end gap-2 mb-4">
               <span className="text-xs font-medium text-slate-600">
                 Network :
@@ -123,7 +148,6 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
             </div>
 
             <div className="flex gap-4">
-              {/* KPI Stats */}
               <div className="flex-1 space-y-4">
                 <div>
                   <div className="mb-1 text-xs font-medium text-slate-600">
@@ -139,7 +163,8 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                     Total Value Locked
                   </div>
                   <div className="text-lg font-semibold text-slate-900">
-                    {formatCurrency(vault.tvlUSD)}
+                    {fEth(totalAssets)}{" "}
+                    <span className="text-sm text-slate-600">STT</span>
                   </div>
                 </div>
 
@@ -148,14 +173,22 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                     Withdrawal Time
                   </div>
                   <div className="text-sm text-slate-700">
-                    {vault.withdrawalTime}
+                    {displayWithdrawal}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="mb-1 text-xs font-medium text-slate-600">
+                    Vault Balance
+                  </div>
+                  <div className="text-sm text-slate-700">
+                    {shares?.toString() ?? "0"}
                   </div>
                 </div>
               </div>
 
-              {/* Vault Images */}
               <div className="flex items-center justify-center mr-15">
-                {vault.slug === "som-eth" && (
+                {displayName === "SomETH Vault" && (
                   <Image
                     src="/Images/Logo/vault-1.png"
                     alt="Vault 1"
@@ -164,7 +197,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                     className="rounded-lg opacity-80"
                   />
                 )}
-                {vault.slug === "som-usd" && (
+                {displayName === "SomUSD Stable Vault" && (
                   <Image
                     src="/Images/Logo/vault-2.png"
                     alt="Vault 2"
@@ -173,7 +206,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                     className="rounded-lg opacity-80"
                   />
                 )}
-                {vault.slug === "som-points" && (
+                {displayName === "SomPoints Boost Vault" && (
                   <Image
                     src="/Images/Logo/vault-3.png"
                     alt="Vault 3"
@@ -186,7 +219,6 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
             </div>
 
             <div className="pt-4 space-y-3">
-              {/* PRIMARY: PINK button */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -195,7 +227,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                   onClick={() => onDeposit?.(vault)}
                   className="w-full font-medium cursor-pointer"
                   style={{
-                    backgroundColor: "#ec4899", // pink-500
+                    backgroundColor: "#ec4899",
                     color: "#ffffff",
                     borderRadius: designTokens.components.button.primary.radius,
                     boxShadow: "0 10px 22px rgba(236,72,153,0.35)",

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { designTokens } from '@/app/(lib)/designTokens';
-import { history } from '@/app/(lib)/mockData';
+import { history } from '@/app/(lib)/vaultsData';
 import Header from './Header';
 import FilterPills from './FilterPills';
 import StatsRow from './StatsRow';

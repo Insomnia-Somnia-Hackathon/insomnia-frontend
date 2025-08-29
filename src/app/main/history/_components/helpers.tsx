@@ -1,4 +1,4 @@
-import { vaults } from "@/app/(lib)/mockData";
+import { vaults } from "@/app/(lib)/vaultsData";
 
 export function getActionColor(action: string) {
   switch (action) {

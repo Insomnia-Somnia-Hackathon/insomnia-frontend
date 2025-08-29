@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { designTokens } from '../../(lib)/designTokens';
 import { formatPercent } from '../../(lib)/utils';
-import { protocols } from '../../(lib)/mockData';
+import { protocols } from '../../(lib)/vaultsData';
 
 export default function ProtocolTicker() {
   return (

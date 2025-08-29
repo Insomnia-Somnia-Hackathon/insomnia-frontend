@@ -3,4 +3,5 @@ export { default as VaultHeader } from './VaultHeader';
 export { default as VaultKpiPanel } from './VaultKpiPanel';
 export { default as VaultTabs } from './VaultTabs';
 export { default as VaultTabContent } from './VaultTabContent';
+export { default as VaultDetailsSkeleton } from './VaultDetailsSkeleton';
 export * from './helper';

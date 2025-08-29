@@ -18,16 +18,12 @@ export default function VaultDetailsSkeleton() {
 
       <section className="relative z-10 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb Skeleton */}
           <div className="mb-8">
             <div className="h-6 bg-gray-300 rounded animate-pulse w-32" />
           </div>
 
-          {/* Main Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Column - Vault Header + Stepper */}
             <div className="lg:col-span-2 space-y-8">
-              {/* Vault Header Skeleton */}
               <div
                 className="p-6 rounded-2xl border shadow-md"
                 style={{
@@ -53,7 +49,6 @@ export default function VaultDetailsSkeleton() {
                 </div>
               </div>
 
-              {/* Stepper Skeleton */}
               <div
                 className="p-6 rounded-2xl border shadow-md"
                 style={{
@@ -65,7 +60,10 @@ export default function VaultDetailsSkeleton() {
                 <div className="h-6 bg-gray-300 rounded animate-pulse w-40 mb-6" />
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   {Array.from({ length: 4 }, (_, i) => (
-                    <div key={i} className="flex flex-col items-center text-center">
+                    <div
+                      key={i}
+                      className="flex flex-col items-center text-center"
+                    >
                       <div className="w-12 h-12 bg-gray-300 rounded-full animate-pulse mb-3" />
                       <div className="h-4 bg-gray-300 rounded animate-pulse w-20 mb-2" />
                       <div className="h-3 bg-gray-300 rounded animate-pulse w-16" />
@@ -75,7 +73,6 @@ export default function VaultDetailsSkeleton() {
               </div>
             </div>
 
-            {/* Right Column - KPI Panel */}
             <div className="lg:col-span-1">
               <div
                 className="p-6 rounded-2xl border shadow-md sticky top-8"
@@ -85,7 +82,6 @@ export default function VaultDetailsSkeleton() {
                   borderColor: "rgba(0,0,0,0.06)",
                 }}
               >
-                {/* Network Header Skeleton */}
                 <div className="flex items-center justify-end gap-2 mb-6">
                   <div className="h-3 bg-gray-300 rounded animate-pulse w-16" />
                   <div className="flex items-center gap-1">
@@ -94,7 +90,6 @@ export default function VaultDetailsSkeleton() {
                   </div>
                 </div>
 
-                {/* KPI Stats Skeleton */}
                 <div className="space-y-6 mb-6">
                   <div>
                     <div className="h-3 bg-gray-300 rounded animate-pulse w-24 mb-2" />
@@ -110,12 +105,10 @@ export default function VaultDetailsSkeleton() {
                   </div>
                 </div>
 
-                {/* Vault Illustration Skeleton */}
                 <div className="flex justify-center mb-6">
                   <div className="w-24 h-24 bg-gray-300 rounded-lg animate-pulse" />
                 </div>
 
-                {/* Action Buttons Skeleton */}
                 <div className="space-y-3">
                   <div className="w-full h-10 bg-gray-300 rounded-lg animate-pulse" />
                   <div className="w-full h-10 bg-gray-300 rounded-lg animate-pulse" />
@@ -124,7 +117,6 @@ export default function VaultDetailsSkeleton() {
             </div>
           </div>
 
-          {/* Tabs Section Skeleton */}
           <div className="mt-12">
             <div
               className="rounded-2xl border shadow-md"
@@ -134,7 +126,6 @@ export default function VaultDetailsSkeleton() {
                 borderColor: "rgba(0,0,0,0.06)",
               }}
             >
-              {/* Tab Navigation Skeleton */}
               <div className="border-b border-gray-200 p-6">
                 <div className="flex space-x-8">
                   {Array.from({ length: 4 }, (_, i) => (
@@ -146,7 +137,6 @@ export default function VaultDetailsSkeleton() {
                 </div>
               </div>
 
-              {/* Tab Content Skeleton */}
               <div className="p-6">
                 <div className="space-y-4">
                   <div className="h-6 bg-gray-300 rounded animate-pulse w-48" />

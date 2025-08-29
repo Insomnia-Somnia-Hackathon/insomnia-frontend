@@ -19,10 +19,10 @@ const somniaTestnet = {
   },
   rpcUrls: {
     default: {
-      http: ['https://dream-rpc.somnia.network/'],
+      http: ['https://rpc.ankr.com/somnia_testnet/6e3fd81558cf77b928b06b38e9409b4677b637118114e83364486294d5ff4811'],
     },
     public: {
-      http: ['https://dream-rpc.somnia.network/'],
+      http: ['https://rpc.ankr.com/somnia_testnet/6e3fd81558cf77b928b06b38e9409b4677b637118114e83364486294d5ff4811'],
     },
   },
   blockExplorers: {

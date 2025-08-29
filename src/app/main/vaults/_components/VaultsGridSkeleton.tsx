@@ -8,7 +8,9 @@ interface VaultsGridSkeletonProps {
   count?: number;
 }
 
-export default function VaultsGridSkeleton({ count = 3 }: VaultsGridSkeletonProps) {
+export default function VaultsGridSkeleton({
+  count = 3,
+}: VaultsGridSkeletonProps) {
   return (
     <div
       className="min-h-screen relative"
@@ -26,7 +28,7 @@ export default function VaultsGridSkeleton({ count = 3 }: VaultsGridSkeletonProp
           <div className="flex items-center justify-between mb-10">
             <div>
               <div className="flex items-center mt-10">
-                <div 
+                <div
                   className="h-12 bg-gray-300 rounded-lg animate-pulse"
                   style={{ width: "280px" }}
                 />
@@ -42,7 +44,7 @@ export default function VaultsGridSkeleton({ count = 3 }: VaultsGridSkeletonProp
             </div>
 
             <div className="relative">
-              <div 
+              <div
                 className="h-10 bg-gray-300 rounded-lg animate-pulse"
                 style={{ width: "120px" }}
               />
