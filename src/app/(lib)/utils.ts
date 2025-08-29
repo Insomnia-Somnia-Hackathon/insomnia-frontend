@@ -5,9 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatCurrency(amount: number, currency = 'USD'): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
+export function formatCurrency(amount: number, currency = "USD"): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
     currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
@@ -19,8 +19,8 @@ export function formatPercent(value: number, decimals = 1): string {
 }
 
 export function formatCompact(value: number): string {
-  return new Intl.NumberFormat('en-US', {
-    notation: 'compact',
+  return new Intl.NumberFormat("en-US", {
+    notation: "compact",
     maximumFractionDigits: 1,
   }).format(value);
 }
@@ -31,23 +31,23 @@ export function shortenHash(hash: string, start = 6, end = 4): string {
 }
 
 export function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   }).format(date);
 }
 
-export function getRiskColor(risk: 'Low' | 'Moderate' | 'High'): string {
+export function getRiskColor(risk: "Low" | "Moderate" | "High"): string {
   switch (risk) {
-    case 'Low':
-      return 'text-green-400 bg-green-400/10';
-    case 'Moderate':
-      return 'text-yellow-400 bg-yellow-400/10';
-    case 'High':
-      return 'text-red-400 bg-red-400/10';
+    case "Low":
+      return "text-green-400 bg-green-400/10";
+    case "Moderate":
+      return "text-black bg-yellow-400/10";
+    case "High":
+      return "text-red-400 bg-red-400/10";
     default:
-      return 'text-gray-400 bg-gray-400/10';
+      return "text-gray-400 bg-gray-400/10";
   }
 }

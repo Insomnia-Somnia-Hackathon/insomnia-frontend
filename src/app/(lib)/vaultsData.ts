@@ -159,78 +159,78 @@ export const history: HistoryItem[] = [
 export const userVaultRewards: UserVaultRewards[] = [
   {
     vaultSlug: "som-eth",
-    totalPoints: 12450,
+    totalPoints: 0,
     rewardBalances: [
       {
         protocolName: "Somnia Network",
         protocolLogo: "/Images/Logo/somnia_logo.png",
-        points: 8300,
+        points: 0,
         multiplier: "2x",
       },
       {
         protocolName: "Somnia Ecosystem",
         protocolLogo:
           "https://pbs.twimg.com/profile_images/1920358416645488640/2I1J4VmX_400x400.jpg",
-        points: 4150,
+        points: 0,
         multiplier: "1.5x",
       },
     ],
   },
   {
     vaultSlug: "som-usd",
-    totalPoints: 8950,
+    totalPoints: 0,
     rewardBalances: [
       {
         protocolName: "Somnia Network",
         protocolLogo: "/Images/Logo/somnia_logo.png",
-        points: 3200,
+        points: 0,
         multiplier: "1x",
       },
       {
         protocolName: "Somnia Games",
         protocolLogo:
           "https://pbs.twimg.com/profile_images/1922692326268289025/SbPCG67Z_400x400.jpg",
-        points: 4100,
+        points: 0,
         multiplier: "2x",
       },
       {
         protocolName: "PotionSwap",
         protocolLogo:
           "https://pbs.twimg.com/profile_images/1919271687188869120/0r7YTdwJ_400x400.jpg",
-        points: 1650,
+        points: 0,
         multiplier: "1.2x",
       },
     ],
   },
   {
     vaultSlug: "som-points",
-    totalPoints: 18750,
+    totalPoints: 0,
     rewardBalances: [
       {
         protocolName: "Somnia Network",
         protocolLogo: "/Images/Logo/somnia_logo.png",
-        points: 9000,
+        points: 0,
         multiplier: "3x",
       },
       {
         protocolName: "Somnia Ecosystem",
         protocolLogo:
           "https://pbs.twimg.com/profile_images/1920358416645488640/2I1J4VmX_400x400.jpg",
-        points: 4500,
+        points: 0,
         multiplier: "2x",
       },
       {
         protocolName: "Somnex",
         protocolLogo:
           "https://pbs.twimg.com/profile_images/1920467040298483713/B7yqMDE4_400x400.jpg",
-        points: 3150,
+        points: 0,
         multiplier: "1.8x",
       },
       {
         protocolName: "Somnia Meme",
         protocolLogo:
           "https://pbs.twimg.com/profile_images/1909551371646291968/-v1dViT0_400x400.jpg",
-        points: 2100,
+        points: 0,
         multiplier: "2.5x",
       },
     ],

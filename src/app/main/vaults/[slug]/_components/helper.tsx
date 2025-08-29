@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface KpiProps {
   label: string;
-  value: string;
+  value: ReactNode;
   highlight?: boolean;
   muted?: boolean;
 }
@@ -14,8 +14,10 @@ export function Kpi({ label, value, highlight, muted }: KpiProps) {
     <div>
       <div className="text-xs font-medium text-slate-500">{label}</div>
       <div
-        className={highlight ? 'text-3xl font-extrabold' : 'text-lg font-semibold'}
-        style={{ color: highlight ? '#10b981' : muted ? '#64748b' : '#0f172a' }}
+        className={
+          highlight ? "text-3xl font-extrabold" : "text-lg font-semibold"
+        }
+        style={{ color: highlight ? "#10b981" : muted ? "#64748b" : "#0f172a" }}
       >
         {value}
       </div>

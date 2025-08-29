@@ -20,8 +20,6 @@ import {
 } from "@/app/hooks/vaults/useReadVaults";
 import { useAccount, useBalance } from "wagmi";
 
-// const EXPLORER_BASE_TX = "https://shannon-explorer.somnia.network/tx";
-
 const GAS_BUFFER_STT = "0.002";
 
 type Mode = "deposit" | "withdraw";
@@ -137,6 +135,14 @@ export default function Popup({
       }
     })();
 
+  React.useEffect(() => {
+    if (!isOpen) {
+      setAmount("");
+      dep.reset?.();
+      wd.reset?.();
+    }
+  }, [isOpen, dep.reset, wd.reset]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -203,48 +209,126 @@ export default function Popup({
               {/* SUCCESS */}
               {isSuccess ? (
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  {/* success header + pop-in */}
+                  <motion.div
+                    className="flex items-center gap-3"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 18 }}
+                  >
                     <CheckCircle2 className="w-6 h-6 text-emerald-500" />
                     <div className="text-slate-700">
                       {mode === "deposit"
-                        ? "Your deposit was confirmed on-chain."
+                        ? "Transaction Successful."
                         : "Your withdrawal was confirmed on-chain."}
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div
-                    className="rounded-xl border p-4 bg-white"
-                    style={{ borderColor: "rgba(236,72,153,0.2)" }}
-                  >
-                    <div className="text-xs font-medium text-slate-500 mb-1">
-                      Transaction Hash
-                    </div>
-                    <div className="flex items-center justify-between gap-3">
-                      <code className="text-[12px] text-slate-800 break-all">
-                        {txHash}
-                      </code>
-                      <button
-                        onClick={copyTx}
-                        className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md border hover:bg-slate-50"
-                        style={{ borderColor: "rgba(0,0,0,0.08)" }}
+                  {/* tx hash card with shimmer + entrance */}
+                  <AnimatePresence mode="wait">
+                    {txHash && (
+                      <motion.div
+                        key={txHash}
+                        className="relative rounded-xl border p-4 bg-white overflow-hidden"
+                        style={{ borderColor: "rgba(236,72,153,0.2)" }}
+                        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 360,
+                          damping: 24,
+                        }}
                       >
-                        <Copy className="w-3.5 h-3.5" />
-                        {copied ? "Copied" : "Copy"}
-                      </button>
-                    </div>
+                        {/* soft glow */}
+                        <motion.span
+                          className="pointer-events-none absolute inset-0"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: [0, 1, 0] }}
+                          transition={{ duration: 1.0 }}
+                          style={{
+                            background:
+                              "radial-gradient(120% 100% at 50% -20%, rgba(236,72,153,0.18), transparent 60%)",
+                          }}
+                        />
+                        {/* shimmer sweep */}
+                        <motion.span
+                          className="pointer-events-none absolute -inset-x-10 top-0 h-2/3"
+                          initial={{ x: "-120%" }}
+                          animate={{ x: "120%" }}
+                          transition={{ duration: 1.1, ease: "easeOut" }}
+                          style={{
+                            background:
+                              "linear-gradient(90deg, transparent, rgba(236,72,153,0.25), transparent)",
+                            filter: "blur(14px)",
+                          }}
+                        />
 
-                    <div className="mt-3">
-                      <a
-                        href={`https://shannon-explorer.somnia.network/tx/${txHash}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-medium text-rose-600 hover:opacity-80"
-                      >
-                        View on Explorer
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  </div>
+                        <div className="text-xs font-medium text-slate-500 mb-1 relative z-10">
+                          Transaction Hash
+                        </div>
+
+                        <div className="flex items-center justify-between gap-3 relative z-10">
+                          <motion.code
+                            className="text-[12px] text-slate-800 break-all"
+                            animate={{ scale: [1, 1.02, 1] }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            {txHash}
+                          </motion.code>
+
+                          <div className="relative">
+                            <button
+                              onClick={copyTx}
+                              className="text-black cursor-pointer inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md border hover:bg-slate-50"
+                              style={{ borderColor: "rgba(0,0,0,0.08)" }}
+                            >
+                              <Copy className="w-3.5 h-3.5" />
+                              {copied ? "Copied" : "Copy"}
+                            </button>
+
+                            {/* tiny copied toast */}
+                            <AnimatePresence>
+                              {copied && (
+                                <motion.div
+                                  className="absolute -top-6 right-0 text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-0.5 text-[11px] shadow-sm"
+                                  initial={{ opacity: 0, y: -6 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -6 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  Copied!
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </div>
+
+                        <motion.div
+                          className="mt-3 relative z-10"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.15, duration: 0.2 }}
+                        >
+                          <a
+                            href={`https://shannon-explorer.somnia.network/tx/${txHash}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1 text-xs font-medium text-rose-600 hover:opacity-80"
+                          >
+                            View on Explorer
+                            <motion.span
+                              initial={{ y: 0 }}
+                              animate={{ y: [-1, 0, -1] }}
+                              transition={{ duration: 1.4, repeat: Infinity }}
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </motion.span>
+                          </a>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   <div className="flex gap-3 pt-2">
                     <Button
