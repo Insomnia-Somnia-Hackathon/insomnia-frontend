@@ -22,6 +22,7 @@ export interface Vault {
   withdrawalTime: string;
   imageUrl: string;
   address: `0x${string}`;
+  rewardsNames?: string[];
 }
 
 export interface HistoryItem {
@@ -45,8 +46,7 @@ export interface UserVaultRewards {
   rewardBalances: UserRewardBalance[];
 }
 
-export const protocols: Protocol[] = [
-];
+export const protocols: Protocol[] = [];
 
 export const vaults: Vault[] = [
   {

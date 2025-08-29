@@ -10,6 +10,9 @@ import { designTokens } from "../../../(lib)/designTokens";
 import { formatPercent, getRiskColor } from "../../../(lib)/utils";
 import type { Vault } from "../../../(lib)/vaultsData";
 import RewardsRow from "../../(components)/RewardsRow";
+import RewardLabels from "../../(components)/AirdropLabelList";
+import { userVaultRewards } from "../../../(lib)/vaultsData";
+import type { UserVaultRewards as UserVaultRewardsT } from "../../../(lib)/vaultsData";
 
 import {
   useVaultStatic,
@@ -36,6 +39,9 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
   const displayName = nameOnChain || vault.name;
   const displaySymbol = symbolOnChain || vault.symbol;
   const displayWithdrawal = formatLock(lockupSeconds) || vault.withdrawalTime;
+  const userRewards = userVaultRewards.find(
+    (r): r is UserVaultRewardsT => r.vaultSlug === vault.slug
+  );
 
   return (
     <div
@@ -115,6 +121,24 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
             <RewardsRow
               logos={vault.rewardsLogos}
               multipliers={vault.rewardsMultipliers}
+            />
+
+            <RewardLabels
+              items={
+                userRewards?.rewardBalances?.length
+                  ? userRewards.rewardBalances.map((reward: any) => ({
+                      logo: reward.protocolLogo,
+                      name: reward.protocolName, // ← ambil dari userRewards
+                      multiplier: reward.multiplier,
+                      points: reward.points,
+                    }))
+                  : vault.rewardsLogos.map((logo, i) => ({
+                      logo,
+                      name: vault.rewardsNames?.[i] ?? `Protocol ${i + 1}`, // fallback
+                      multiplier: vault.rewardsMultipliers?.[i],
+                      points: 0,
+                    }))
+              }
             />
           </div>
         </div>

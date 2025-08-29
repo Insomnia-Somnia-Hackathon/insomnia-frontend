@@ -10,7 +10,7 @@ interface RewardsRowProps {
   maxShow?: number;
 }
 
-export default function RewardsRow({ logos, multipliers, maxShow = 4 }: RewardsRowProps) {
+export default function RewardsRow({ logos, multipliers, maxShow = 4,}: RewardsRowProps) {
   const displayLogos = logos.slice(0, maxShow);
   const displayMultipliers = multipliers.slice(0, maxShow);
   const remainingCount = logos.length - maxShow;
@@ -21,7 +21,7 @@ export default function RewardsRow({ logos, multipliers, maxShow = 4 }: RewardsR
         className="text-sm font-medium"
         style={{ color: designTokens.colors.textSecondary }}
       >
-        Rewards:
+        Airdrop Points Rewards:
       </span>
       <div className="flex items-start space-x-2 mt-1">
         {displayLogos.map((logo, index) => (
