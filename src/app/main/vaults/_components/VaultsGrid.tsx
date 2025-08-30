@@ -59,6 +59,7 @@ export default function VaultsGrid() {
 
         <section className="relative z-10 py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            
             <div className="flex items-center justify-between mb-10">
               <div>
                 <div className="flex items-center mt-10">
@@ -70,10 +71,11 @@ export default function VaultsGrid() {
                   </h1>
                   <div className="ml-3 flex items-center">
                     <Image
-                      src="/Images/Logo/somnia_logo.png"
+                      src="/Images/Logo/insomnia-vaults-logo.jpg"
                       alt="somnia"
                       width={40}
                       height={40}
+                      className="rounded-full"
                     />
                   </div>
                 </div>

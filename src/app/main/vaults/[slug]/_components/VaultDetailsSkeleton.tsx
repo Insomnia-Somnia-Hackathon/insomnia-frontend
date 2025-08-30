@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { designTokens } from "@/app/(lib)/designTokens";
 
 export default function VaultDetailsSkeleton() {
   return (

@@ -162,18 +162,20 @@ export default function VaultKpiPanel({
               Deposit
             </Button>
           </motion.div>
-          <Button
-            variant="outline"
-            onClick={() => onWithdraw?.(vault)}
-            className="cursor-pointer w-full font-medium rounded-full"
-            style={{
-              backgroundColor: "#ffffff",
-              color: "#ec4899",
-              borderColor: "rgba(236,72,153,0.45)",
-            }}
-          >
-            Withdraw
-          </Button>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <Button
+              variant="outline"
+              onClick={() => onWithdraw?.(vault)}
+              className="cursor-pointer w-full font-medium rounded-full"
+              style={{
+                backgroundColor: "#ffffff",
+                color: "#ec4899",
+                borderColor: "rgba(236,72,153,0.45)",
+              }}
+            >
+              Withdraw
+            </Button>
+          </motion.div>
         </div>
       </div>
     </div>

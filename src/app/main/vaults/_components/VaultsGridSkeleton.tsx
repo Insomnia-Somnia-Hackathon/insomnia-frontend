@@ -25,36 +25,35 @@ export default function VaultsGridSkeleton({
 
       <section className="relative z-10 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Header Skeleton */}
           <div className="flex items-center justify-between mb-10">
             <div>
               <div className="flex items-center mt-10">
-                <div
-                  className="h-12 bg-gray-300 rounded-lg animate-pulse"
-                  style={{ width: "280px" }}
-                />
+                {/* Title Skeleton */}
+                <div className="animate-pulse">
+                  <div className="h-12 bg-gray-300/60 rounded-lg" style={{ width: "280px" }} />
+                </div>
                 <div className="ml-3 flex items-center">
-                  <div className="w-10 h-10 bg-gray-300 rounded animate-pulse" />
+                  {/* Logo Skeleton */}
+                  <div className="w-10 h-10 bg-gray-300/60 rounded-full animate-pulse" />
                 </div>
               </div>
 
+              {/* Description Skeleton */}
               <div className="mt-2 space-y-2">
-                <div className="h-4 bg-gray-300 rounded animate-pulse w-96" />
-                <div className="h-4 bg-gray-300 rounded animate-pulse w-72" />
+                <div className="h-4 bg-gray-300/60 rounded animate-pulse w-96" />
+                <div className="h-4 bg-gray-300/60 rounded animate-pulse w-72" />
               </div>
             </div>
 
+            {/* Filter Button Skeleton */}
             <div className="relative">
-              <div
-                className="h-10 bg-gray-300 rounded-lg animate-pulse"
-                style={{ width: "120px" }}
-              />
+              <div className="h-10 bg-gray-300/60 rounded-lg animate-pulse" style={{ width: "120px" }} />
             </div>
           </div>
 
-          <div
-            className="grid grid-cols-1 gap-6"
-            style={{ gap: designTokens.layout.gridGap }}
-          >
+          {/* Vault Cards Grid Skeleton */}
+          <div className="grid grid-cols-1 gap-6" style={{ gap: designTokens.layout.gridGap }}>
             {Array.from({ length: count }, (_, i) => (
               <div
                 key={i}

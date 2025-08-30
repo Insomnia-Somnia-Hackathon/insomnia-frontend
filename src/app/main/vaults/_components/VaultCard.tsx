@@ -22,6 +22,7 @@ import {
   fEth,
   formatLock,
 } from "@/app/hooks/vaults/useReadVaults";
+import { useAccount } from "wagmi";
 
 interface VaultCardProps {
   vault: Vault;
@@ -29,11 +30,12 @@ interface VaultCardProps {
 }
 
 export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
+  const { address } = useAccount();
   const { name: nameOnChain, symbol: symbolOnChain } = useVaultStatic(
     vault.address
   );
   const { totalAssets } = useVaultDynamic(vault.address);
-  const { shares } = useVaultUserBalances(vault.address);
+  const { shares } = useVaultUserBalances(vault.address, address);
   const { lockupSeconds } = useVaultWithdrawInfo(vault.address);
 
   const displayName = nameOnChain || vault.name;
@@ -186,9 +188,17 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                   <div className="mb-1 text-xs font-medium text-slate-600">
                     Total Value Locked
                   </div>
-                  <div className="text-lg font-semibold text-slate-900">
-                    {fEth(totalAssets)}{" "}
-                    <span className="text-sm text-slate-600">STT</span>
+                  <div className="flex items-center gap-2 text-sm text-slate-700">
+                    <span>
+                      {address ? fEth(totalAssets) : "Connect wallet"}
+                    </span>
+                    <Image
+                      src="/Images/Logo/somnia_logo.png"
+                      alt="Somnia"
+                      width={16}
+                      height={16}
+                      className="rounded-sm"
+                    />
                   </div>
                 </div>
 
@@ -203,10 +213,17 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
 
                 <div>
                   <div className="mb-1 text-xs font-medium text-slate-600">
-                    Vault Balance
+                    Your Vault Balance
                   </div>
-                  <div className="text-sm text-slate-700">
-                    {shares?.toString() ?? "0"}
+                  <div className="flex items-center gap-2 text-sm text-slate-700">
+                    <span>{address ? fEth(shares) : "Connect wallet"}</span>
+                    <Image
+                      src="/Images/Logo/somnia_logo.png"
+                      alt="Somnia"
+                      width={16}
+                      height={16}
+                      className="rounded-sm"
+                    />
                   </div>
                 </div>
               </div>
@@ -262,19 +279,24 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
               </motion.div>
 
               <Link href={`/main/vaults/${vault.slug}`}>
-                <Button
-                  variant="outline"
-                  className="w-full font-medium cursor-pointer"
-                  style={{
-                    backgroundColor: "#ffffff",
-                    color: "#ec4899",
-                    borderColor: "rgba(236,72,153,0.45)",
-                    borderRadius:
-                      designTokens.components.button.secondary.radius,
-                  }}
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  Details
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full font-medium cursor-pointer"
+                    style={{
+                      backgroundColor: "#ffffff",
+                      color: "#ec4899",
+                      borderColor: "rgba(236,72,153,0.45)",
+                      borderRadius:
+                        designTokens.components.button.secondary.radius,
+                    }}
+                  >
+                    Details
+                  </Button>
+                </motion.div>
               </Link>
             </div>
           </div>

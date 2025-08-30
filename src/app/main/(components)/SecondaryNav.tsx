@@ -25,7 +25,6 @@ export default function SecondaryNav() {
 
   const tabs = [
     { label: "Vaults", href: "/main/vaults" },
-    { label: "History", href: "/main/history" },
   ] as const;
 
   const isActive = (href: string) => pathname.startsWith(href);

@@ -236,7 +236,7 @@ export const NavbarLogo = () => {
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
       <img
-        src="/Images/Logo/insomnia-logo.png"
+        src="/Images/Logo/insomnia-logo.jpg"
         alt="Insomnia Logo"
         className="w-8 h-8 rounded-full"
       />

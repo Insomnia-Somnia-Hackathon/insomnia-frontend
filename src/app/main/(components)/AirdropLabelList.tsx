@@ -5,13 +5,13 @@ import Image from 'next/image';
 
 export type RewardLabelItem = {
   logo: string;
-  name: string;        // protocolName
-  multiplier?: string; // "2x", "1.5x", dsb (opsional)
+  name: string;       
+  multiplier?: string;
 };
 
 interface RewardLabelsProps {
   items: RewardLabelItem[];
-  maxShow?: number;    // opsional: batasi tampilan
+  maxShow?: number; 
 }
 
 export default function RewardLabels({ items, maxShow }: RewardLabelsProps) {

@@ -52,15 +52,12 @@ export interface AnimatedListItemProps {
 }
 
 const AnimatedListItem = ({ children, index }: AnimatedListItemProps) => {
-  const animations = {
-    initial: { scale: 0, opacity: 0 },
-    animate: { scale: 1, opacity: 1, transition: { type: "spring" } },
-    exit: { scale: 0, opacity: 0, transition: { type: "spring" } },
-    transition: { type: "spring", stiffness: 350, damping: 40 },
-  };
-
   return (
-    <motion.div {...animations}>
+    <motion.div
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1, transition: { type: "spring" as const, stiffness: 350, damping: 40 } }}
+      exit={{ scale: 0, opacity: 0, transition: { type: "spring" as const, stiffness: 350, damping: 40 } }}
+    >
       {children}
     </motion.div>
   );

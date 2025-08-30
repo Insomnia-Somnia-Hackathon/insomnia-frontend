@@ -44,16 +44,32 @@ export function useVaultDynamic(vault: Address) {
 }
 
 export function useVaultUserBalances(vault: Address, user?: Address) {
-  const enabled = !!user;
-  const { data } = useReadContract({
+  const enabled = !!user && !!vault;
+  const { data, isError, error } = useReadContract({
     address: vault,
     abi: ABI_INSOMNIA_VAULT,
     functionName: "balanceOf",
     args: user ? [user] : undefined,
-    query: { enabled },
+    query: { 
+      enabled,
+      refetchInterval: 10000, // Refetch every 10 seconds
+    },
   });
+
+  // Debug logging (can be removed in production)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('useVaultUserBalances:', {
+      vault,
+      user,
+      enabled,
+      data,
+      isError,
+      error: error?.message
+    });
+  }
+
   const shares = (data ?? BigInt(0)) as bigint;
-  return { shares };
+  return { shares, isError, error };
 }
 
 export function usePreviewWithdraw(vault: Address, shares?: bigint) {

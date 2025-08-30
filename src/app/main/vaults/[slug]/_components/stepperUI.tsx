@@ -6,7 +6,7 @@ import { CheckCircle2, Coins, Wallet, DollarSign } from 'lucide-react';
 export default function Stepper() {
   const steps = [
     { id: 1, label: 'Click Deposit', icon: <Wallet className="h-5 w-5" /> },
-    { id: 2, label: 'Check Balance STT Token', icon: <Coins className="h-5 w-5" /> },
+    { id: 2, label: 'Check your STT Balance', icon: <Coins className="h-5 w-5" /> },
     { id: 3, label: 'Enter Amount', icon: <DollarSign className="h-5 w-5" /> },
     { id: 4, label: 'Completed', icon: <CheckCircle2 className="h-5 w-5" /> },
   ];
