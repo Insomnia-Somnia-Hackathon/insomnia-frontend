@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+```markdown
+# 🌙 Insomnia Frontend
 
-## Getting Started
+Frontend application for the Insomnia Protocol, a DeFi vault platform built on Somnia Network.
 
-First, run the development server:
+This app allows users to connect their wallets, deposit into vaults, earn yield, and farm airdrop points seamlessly.
 
+---
+
+## 🛠 Tech Stack
+
+| Technology   | Purpose                                      |
+|--------------|----------------------------------------------|
+| Next.js  | React framework for production               |
+| Tailwind CSS | Utility-first CSS for styling            |
+| wagmi    | React hooks for Ethereum                     |
+| RainbowKit | Beautiful wallet connection UI              |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- [Node.js](https://nodejs.org/) (≥18.x)
+- [pnpm](https://pnpm.io/) (≥8.x)
+
+Install pnpm globally if you haven’t already:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g pnpm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Clone the Repository
+```bash
+git clone https://github.com/your-org/insomnia-frontend.git
+cd insomnia-frontend
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Install Dependencies
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Environment Variables
+Create `.env.local` in the project root and add:
 
-## Learn More
+```bash
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
+NEXT_PUBLIC_VAULT_ADDRESS_FIRST=0xYourVaultAddress1
+NEXT_PUBLIC_VAULT_ADDRESS_SECOND=0xYourVaultAddress2
+NEXT_PUBLIC_VAULT_ADDRESS_THIRD=0xYourVaultAddress3
+NEXT_PUBLIC_POINT_CONTROLLER_ADDRESS=0xYourPointsControllerAddress
+```
 
-To learn more about Next.js, take a look at the following resources:
+> Example (testnet)  
+> ```bash
+> NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=375c4a662535c54f8a9b782936810238
+> NEXT_PUBLIC_VAULT_ADDRESS_FIRST=0x0fBCa75D8cD14dCf3AF4A45DCBF223aA1E7910F7
+> NEXT_PUBLIC_VAULT_ADDRESS_SECOND=0x6261514eE799666265c8c371bf21d0B0F6D85E76
+> NEXT_PUBLIC_VAULT_ADDRESS_THIRD=0xD1edDafEb54071Bc78894B554Ad4bc66FA072678
+> NEXT_PUBLIC_POINT_CONTROLLER_ADDRESS=0x185427782C214f1455180bf6f1E47Cd52E9096d6
+> ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. Run Development Server
+```bash
+pnpm dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📦 Build for Production
+```bash
+pnpm build
+pnpm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📋 Environment Variables Reference
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | WalletConnect Cloud Project ID |
+| `NEXT_PUBLIC_VAULT_ADDRESS_FIRST` | Vault #1 contract address |
+| `NEXT_PUBLIC_VAULT_ADDRESS_SECOND` | Vault #2 contract address |
+| `NEXT_PUBLIC_VAULT_ADDRESS_THIRD` | Vault #3 contract address |
+| `NEXT_PUBLIC_POINT_CONTROLLER_ADDRESS` | PointsController contract address |
+
+---
+
+## 📜 License
+MIT © Insomnia Protocol
