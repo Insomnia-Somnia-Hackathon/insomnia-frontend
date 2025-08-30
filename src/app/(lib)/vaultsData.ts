@@ -54,7 +54,7 @@ export const vaults: Vault[] = [
     symbol: "SOM-ETH",
     name: "SomETH Vault",
     tvlUSD: 2450000,
-    estPointsAPR: 24.5,
+    estPointsAPR: 12.5,
     risk: "Moderate",
     strategies: ["Liquidity Mining", "Yield Farming", "Cross-Chain Bridge"],
     acceptedAssets: ["STT"],
@@ -64,7 +64,7 @@ export const vaults: Vault[] = [
     ],
     rewardsMultipliers: ["2x", "1.5x"],
     description:
-      "Maximize ETH rewards across multiple Somnia protocols with automated yield strategies.",
+      "Maximize Somnia rewards in SomETH vaults across multiple Somnia protocols with automated yield strategies.",
     withdrawalTime: "7 days",
     imageUrl: "/Images/Logo/eth-logo.png",
     address: "0x0fBCa75D8cD14dCf3AF4A45DCBF223aA1E7910F7",
@@ -74,7 +74,7 @@ export const vaults: Vault[] = [
     symbol: "SOM-USD",
     name: "SomUSD Stable Vault",
     tvlUSD: 1890000,
-    estPointsAPR: 18.2,
+    estPointsAPR: 9.2,
     risk: "Low",
     strategies: ["Stable Yield", "Lending Optimization", "Arbitrage"],
     acceptedAssets: ["STT"],
@@ -85,7 +85,7 @@ export const vaults: Vault[] = [
     ],
     rewardsMultipliers: ["1x", "2x", "1.2x"],
     description:
-      "Stable, consistent returns from USD-denominated assets across the Somnia ecosystem.",
+      "Stable Vaults, consistent returns from USD-denominated assets across the Somnia ecosystem.",
     withdrawalTime: "3 days",
     imageUrl: "/Images/Logo/somnia_logo.png",
     address: "0x6261514Ee799666265c8c371bf21d0B0F6D85E76",
@@ -95,7 +95,7 @@ export const vaults: Vault[] = [
     symbol: "SOM-PTS",
     name: "SomPoints Boost Vault",
     tvlUSD: 3120000,
-    estPointsAPR: 32.8,
+    estPointsAPR: 15.8,
     risk: "High",
     strategies: [
       "Points Maximization",
@@ -177,7 +177,7 @@ export const userVaultRewards: UserVaultRewards[] = [
     ],
   },
   {
-    vaultSlug: "som-usd",
+    vaultSlug: "som-points",
     totalPoints: 0,
     rewardBalances: [
       {
@@ -203,7 +203,7 @@ export const userVaultRewards: UserVaultRewards[] = [
     ],
   },
   {
-    vaultSlug: "som-points",
+    vaultSlug: "som-usd",
     totalPoints: 0,
     rewardBalances: [
       {

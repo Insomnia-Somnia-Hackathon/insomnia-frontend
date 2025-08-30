@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Wallet, TrendingUp, Shield, FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 type TabId = "overview" | "strategies" | "risks" | "docs";
 
@@ -28,14 +29,30 @@ const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
 export default function VaultTabs({ activeTab, setActiveTab }: VaultTabsProps) {
   return (
     <div className="mb-8">
-      <div className="flex gap-2 overflow-x-auto">
-        {TABS.map((tab) => {
+      <div className="flex gap-2 overflow-x-auto py-2 px-4">
+        {TABS.map((tab, index) => {
           const active = activeTab === tab.id;
           return (
-            <button
+            <motion.button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-colors"
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm cursor-pointer relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                delay: index * 0.1, 
+                duration: 0.3, 
+                ease: "easeOut" 
+              }}
+              whileHover={{ 
+                scale: 1.05,
+                y: -2,
+                transition: { duration: 0.2, ease: "easeOut" }
+              }}
+              whileTap={{ 
+                scale: 0.95,
+                transition: { duration: 0.1, ease: "easeInOut" }
+              }}
               style={{
                 backgroundColor: active ? "#ec4899" : "rgba(255,255,255,0.9)",
                 color: active ? "#ffffff" : "#334155",
@@ -44,12 +61,58 @@ export default function VaultTabs({ activeTab, setActiveTab }: VaultTabsProps) {
                 }`,
                 boxShadow: active
                   ? "0 10px 20px rgba(236,72,153,0.25)"
-                  : "none",
+                  : "0 2px 8px rgba(0,0,0,0.05)",
               }}
             >
-              {tab.icon}
-              <span>{tab.label}</span>
-            </button>
+              {/* Background glow animation for active tab */}
+              {active && (
+                <motion.div
+                  layoutId="activeTabBackground"
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: "linear-gradient(90deg, rgba(236,72,153,0.8), rgba(219,39,119,0.8))",
+                  }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
+              
+              {/* Content */}
+              <div className="relative z-10 flex items-center gap-2">
+                <motion.div
+                  animate={{ 
+                    rotate: active ? [0, 360] : 0,
+                    scale: active ? [1, 1.2, 1] : 1
+                  }}
+                  transition={{ 
+                    duration: active ? 0.6 : 0.2,
+                    ease: "easeInOut" 
+                  }}
+                >
+                  {tab.icon}
+                </motion.div>
+                <motion.span
+                  animate={{ 
+                    fontWeight: active ? 600 : 500,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {tab.label}
+                </motion.span>
+              </div>
+
+              {/* Hover effect overlay */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                initial={{ opacity: 0 }}
+                whileHover={{ 
+                  opacity: active ? 0 : 0.1,
+                  transition: { duration: 0.2 }
+                }}
+                style={{
+                  background: "linear-gradient(90deg, rgba(236,72,153,0.3), rgba(219,39,119,0.3))",
+                }}
+              />
+            </motion.button>
           );
         })}
       </div>

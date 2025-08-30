@@ -36,7 +36,7 @@ export default function VaultDetails({ vault }: VaultDetailsProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleDeposit = () => setIsPopupOpen(true);
+  // const handleDeposit = () => setIsPopupOpen(true);
   const handleClosePopup = () => setIsPopupOpen(false);
 
   if (isLoading) return <VaultDetailsSkeleton />;
