@@ -1,7 +1,7 @@
 ```markdown
 # 🌙 Insomnia Frontend
 
-Frontend application for the **Insomnia Protocol**, a DeFi vault platform built on **Somnia Network**.
+Frontend application for the Insomnia Protocol, a DeFi vault platform built on Somnia Network.
 
 This app allows users to connect their wallets, deposit into vaults, earn yield, and farm airdrop points seamlessly.
 
@@ -11,10 +11,10 @@ This app allows users to connect their wallets, deposit into vaults, earn yield,
 
 | Technology   | Purpose                                      |
 |--------------|----------------------------------------------|
-| **Next.js**  | React framework for production               |
-| **Tailwind CSS** | Utility-first CSS for styling            |
-| **wagmi**    | React hooks for Ethereum                     |
-| **RainbowKit** | Beautiful wallet connection UI              |
+| Next.js  | React framework for production               |
+| Tailwind CSS | Utility-first CSS for styling            |
+| wagmi    | React hooks for Ethereum                     |
+| RainbowKit | Beautiful wallet connection UI              |
 
 ---
 
@@ -24,7 +24,7 @@ This app allows users to connect their wallets, deposit into vaults, earn yield,
 - [Node.js](https://nodejs.org/) (≥18.x)
 - [pnpm](https://pnpm.io/) (≥8.x)
 
-Install **pnpm** globally if you haven’t already:
+Install pnpm globally if you haven’t already:
 ```bash
 npm install -g pnpm
 ```
@@ -51,7 +51,7 @@ NEXT_PUBLIC_VAULT_ADDRESS_THIRD=0xYourVaultAddress3
 NEXT_PUBLIC_POINT_CONTROLLER_ADDRESS=0xYourPointsControllerAddress
 ```
 
-> **Example (testnet)**  
+> Example (testnet)  
 > ```bash
 > NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=375c4a662535c54f8a9b782936810238
 > NEXT_PUBLIC_VAULT_ADDRESS_FIRST=0x0fBCa75D8cD14dCf3AF4A45DCBF223aA1E7910F7
