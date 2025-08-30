@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Wallet, TrendingUp, Shield, FileText } from "lucide-react";
+import { Feather, Target, CircleAlert, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 type TabId = "overview" | "strategies" | "risks" | "docs";
@@ -15,14 +15,14 @@ const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
   {
     id: "overview",
     label: "Overview",
-    icon: <TrendingUp className="h-4 w-4" />,
+    icon: <Target className="h-4 w-4" />,
   },
   {
     id: "strategies",
     label: "Strategies",
-    icon: <Wallet className="h-4 w-4" />,
+    icon: <Feather className="h-4 w-4" />,
   },
-  { id: "risks", label: "Risks", icon: <Shield className="h-4 w-4" /> },
+  { id: "risks", label: "Risks", icon: <CircleAlert className="h-4 w-4" /> },
   { id: "docs", label: "Docs", icon: <FileText className="h-4 w-4" /> },
 ];
 

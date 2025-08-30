@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { CheckCircle2, Coins, Wallet, DollarSign } from 'lucide-react';
+import { PackageCheck, Gem, Vault, BadgeDollarSign } from 'lucide-react';
 
 export default function Stepper() {
   const steps = [
-    { id: 1, label: 'Click Deposit', icon: <Wallet className="h-5 w-5" /> },
-    { id: 2, label: 'Check your STT Balance', icon: <Coins className="h-5 w-5" /> },
-    { id: 3, label: 'Enter Amount', icon: <DollarSign className="h-5 w-5" /> },
-    { id: 4, label: 'Completed', icon: <CheckCircle2 className="h-5 w-5" /> },
+    { id: 1, label: 'Click Deposit', icon: <Vault className="h-5 w-5" /> },
+    { id: 2, label: 'Check your STT Balance', icon: <Gem className="h-5 w-5" /> },
+    { id: 3, label: 'Enter Amount', icon: <BadgeDollarSign className="h-5 w-5" /> },
+    { id: 4, label: 'Completed', icon: <PackageCheck className="h-5 w-5" /> },
   ];
 
   return (

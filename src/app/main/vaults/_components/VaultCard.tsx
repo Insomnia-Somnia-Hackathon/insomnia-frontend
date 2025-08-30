@@ -231,7 +231,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
               <div className="flex items-center justify-center mr-15">
                 {displayName === "SomETH Vault" && (
                   <Image
-                    src="/Images/Logo/vault-1.png"
+                    src="/Images/gif/vault-animated-1.gif"
                     alt="Vault 1"
                     width={80}
                     height={80}
@@ -240,7 +240,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                 )}
                 {displayName === "SomUSD Stable Vault" && (
                   <Image
-                    src="/Images/Logo/vault-2.png"
+                    src="/Images/gif/vault-animated-2.gif"
                     alt="Vault 2"
                     width={80}
                     height={80}
@@ -249,7 +249,7 @@ export default function VaultCard({ vault, onDeposit }: VaultCardProps) {
                 )}
                 {displayName === "SomPoints Boost Vault" && (
                   <Image
-                    src="/Images/Logo/vault-3.png"
+                    src="/Images/gif/vault-animated-3.gif"
                     alt="Vault 3"
                     width={80}
                     height={80}

@@ -11,7 +11,7 @@ export const FeaturesSection = () => {
       description:
         "Deposit once and let our smart vaults auto-distribute across protocols. Earn farming rewards and maximize airdrop points without the hassle.",
       icon: null,
-      gifSrc: "/Images/gif/vault-animated-1.gif",
+      gifSrc: "/Images/Logo/vault-1.png",
       spotlightColor: "rgba(147, 51, 234, 0.2)" as const,
     },
     {
@@ -19,7 +19,7 @@ export const FeaturesSection = () => {
       description:
         "One ecosystem, endless opportunities. Collect airdrop points from Somnia's native protocols without ever leaving the network.",
       icon: LinkSimple,
-      gifSrc: "/Images/gif/vault-animated-2.gif",
+      gifSrc: "/Images/Logo/vault-2.png",
       spotlightColor: "rgba(236, 72, 153, 0.2)" as const,
     },
     {
@@ -27,7 +27,7 @@ export const FeaturesSection = () => {
       description:
         "Let automation work for you. Earn points & Yield even while you sleep.",
       icon: TrendUp,
-      gifSrc: "/Images/gif/vault-animated-3.gif",
+      gifSrc: "/Images/Logo/vault-3.png",
       spotlightColor: "rgba(59, 130, 246, 0.2)" as const,
     },
     {

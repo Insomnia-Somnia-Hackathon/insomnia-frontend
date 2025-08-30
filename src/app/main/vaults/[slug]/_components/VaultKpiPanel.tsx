@@ -101,7 +101,7 @@ export default function VaultKpiPanel({
       </div> */}
 
       {/* grid: 1 col on mobile, 2 cols on md+, each row has L/R cells to keep alignment */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 items-start mt-5">
         {/* Row 0: APR (L) vs Network (R) */}
         <Kpi
           label="Est. Points APR"

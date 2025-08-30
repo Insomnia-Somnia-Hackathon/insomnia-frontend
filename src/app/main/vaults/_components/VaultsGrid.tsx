@@ -72,7 +72,7 @@ export default function VaultsGrid() {
                   </h1>
                   <div className="ml-3 flex items-center">
                     <Image
-                      src="/Images/Logo/insomnia-vaults-logo.jpg"
+                      src="/Images/gif/insomnia-vaults.gif"
                       alt="somnia"
                       width={40}
                       height={40}
