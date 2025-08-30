@@ -8,7 +8,7 @@ import {
 import { VAULT_ADDRESSES } from "@/app/constants/vault";
 import { useMemo } from "react";
 
-const POINT_CONTROLLER_ADDRESS = "0x185427782C214f1455180bf6f1E47Cd52E9096d6";
+const POINT_CONTROLLER_ADDRESS = process.env.NEXT_PUBLIC_POINT_CONTROLLER_ADDRESS;
 
 const SOURCE_LABELS: Record<string, string> = {
   DEPOSIT: "DEPOSIT",

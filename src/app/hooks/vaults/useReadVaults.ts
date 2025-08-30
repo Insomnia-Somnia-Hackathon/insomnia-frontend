@@ -57,16 +57,16 @@ export function useVaultUserBalances(vault: Address, user?: Address) {
   });
 
   // Debug logging (can be removed in production)
-  if (process.env.NODE_ENV === 'development') {
-    console.log('useVaultUserBalances:', {
-      vault,
-      user,
-      enabled,
-      data,
-      isError,
-      error: error?.message
-    });
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   console.log('useVaultUserBalances:', {
+  //     vault,
+  //     user,
+  //     enabled,
+  //     data,
+  //     isError,
+  //     error: error?.message
+  //   });
+  // }
 
   const shares = (data ?? BigInt(0)) as bigint;
   return { shares, isError, error };
